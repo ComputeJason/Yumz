@@ -17,7 +17,7 @@ class _ProfileState extends State<Profile> {
         leading: Icon(
           Icons.home,
           color: Color(0xFF507E5C),
-          size: 35,
+          size: 34,
         ),
         title: Text(
           'Profile',
@@ -35,7 +35,7 @@ class _ProfileState extends State<Profile> {
         label: Text(
           'Recipe',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 19,
           ),
         ),
       ),
