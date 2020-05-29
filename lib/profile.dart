@@ -35,7 +35,7 @@ class _ProfileState extends State<Profile> {
         label: Text(
           'Recipe',
           style: TextStyle(
-            fontSize: 19,
+            fontSize: 20,
           ),
         ),
       ),
