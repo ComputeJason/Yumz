@@ -17,7 +17,7 @@ class _ProfileState extends State<Profile> {
         leading: Icon(
           Icons.home,
           color: Color(0xFF507E5C),
-          size: 34,
+          size: 35,
         ),
         title: Text(
           'Profile',
