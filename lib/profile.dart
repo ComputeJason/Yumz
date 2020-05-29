@@ -7,6 +7,8 @@ class Profile extends StatefulWidget {
   _ProfileState createState() => _ProfileState();
 }
 
+//test1
+
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class _ProfileState extends State<Profile> {
         leading: Icon(
           Icons.home,
           color: Color(0xFF507E5C),
-          size: 34,
+          size: 3444,
         ),
         title: Text(
           'Profile',
