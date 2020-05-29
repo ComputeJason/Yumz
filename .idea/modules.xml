@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/Yumz_orbital_app.iml" filepath="$PROJECT_DIR$/.idea/Yumz_orbital_app.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Yumz_orbital_app_2.iml" filepath="$PROJECT_DIR$/.idea/Yumz_orbital_app_2.iml" />
+>>>>>>> 311f378525e4e213b35515ed9786f7c6968d10ac
     </modules>
   </component>
 </project>
