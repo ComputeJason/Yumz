@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		rQN/sXrRtOz0pckSOh+6/41hyK0=
+		9dcuO3fKwgi/pMkmrxnMLiASedA=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>flutter_assets/LICENSE</key>
 		<data>
-		hSDJKd/FB565+x8rlXgJ2LKvExw=
+		rrijPNRn0uPR3FVtZE4m3JH/qz0=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.ttf</key>
 		<data>
@@ -28,13 +28,57 @@
 		<data>
 		z7Ce/8crMz3fih3rlBMuVMbyEBk=
 		</data>
+		<key>flutter_assets/images/10_easy_pasta_dishes.jpg</key>
+		<data>
+		AaKnVXXAf3++HfkgYfGSbzf5FWE=
+		</data>
+		<key>flutter_assets/images/Chicken-Parmesean.jpg</key>
+		<data>
+		5PVAqJCU21F8KL0nYMQUxZRVPck=
+		</data>
+		<key>flutter_assets/images/Grilled-Pork-Shoulder-Steaks-Herb-Salad.jpg</key>
+		<data>
+		ity1GK6uGcSYFnFSq1ngCIvUmSg=
+		</data>
+		<key>flutter_assets/images/Trail-Mix-Cookies.jpg</key>
+		<data>
+		cRiZnTe37M4cM3NknFVHIUBrevY=
+		</data>
+		<key>flutter_assets/images/bakes_for_this_quarantine.jpg</key>
+		<data>
+		asuSW76w6XYUrGSyH6QSsCV222E=
+		</data>
+		<key>flutter_assets/images/buttermilk_springchicken.jpg</key>
+		<data>
+		pAzRpkwiTg5zcaLMDlyFGvmriKY=
+		</data>
+		<key>flutter_assets/images/crispy_ricebowl.jpg</key>
+		<data>
+		D2CYcgT/o6OJwqLcvyftxbrQkvQ=
+		</data>
+		<key>flutter_assets/images/dokbokki.jpg</key>
+		<data>
+		5PB5zPRf5DJNxpZEQqaOMds95DQ=
+		</data>
+		<key>flutter_assets/images/healthy_recipes.jpg</key>
+		<data>
+		8hHljvIuADy8O1y/sWQZY/ANb3o=
+		</data>
+		<key>flutter_assets/images/yumzDrawing.png</key>
+		<data>
+		YIoZBCp0GZg7FTE64E88NiGfY/A=
+		</data>
+		<key>flutter_assets/images/zuccini_recipe.jpg</key>
+		<data>
+		aehffB4oZ0kSH9yp14R/g3NKyLQ=
+		</data>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<data>
 		KOMcQdw7AgysBT6dE5+xCfnnPFE=
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		OwKvZ/A+vqzppzcO58SVWtuzNQo=
+		S76ZJNG0vq3lIT9QJ9okEl+TR6A=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -51,11 +95,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rQN/sXrRtOz0pckSOh+6/41hyK0=
+			9dcuO3fKwgi/pMkmrxnMLiASedA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ncVundux4LHFPUOlQi2No1W5e6kGZjAgxE9vccbBZQY=
+			n55ed/I7KWdnrqtHI1BL7m+JDD6pr6gHmiUIuSaECNU=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -73,11 +117,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hSDJKd/FB565+x8rlXgJ2LKvExw=
+			rrijPNRn0uPR3FVtZE4m3JH/qz0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ji/Zic+93lz9GG0VnjGf9gBe1tTuD/R2EvSbSeOkvP4=
+			etbx4oX9NRpIW4AY5Fxi6Ax1vCq9KaUD6YVv/2A9Wqg=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.ttf</key>
@@ -102,6 +146,127 @@
 			7TcDOYUIH4x6tqjhlYp3e6XctYmINLIpcMhRK+koZHg=
 			</data>
 		</dict>
+		<key>flutter_assets/images/10_easy_pasta_dishes.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AaKnVXXAf3++HfkgYfGSbzf5FWE=
+			</data>
+			<key>hash2</key>
+			<data>
+			xXJZa6UY9jOIqWiHiGTcBJujwignXl63y/nrgotCVlQ=
+			</data>
+		</dict>
+		<key>flutter_assets/images/Chicken-Parmesean.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5PVAqJCU21F8KL0nYMQUxZRVPck=
+			</data>
+			<key>hash2</key>
+			<data>
+			A039RI/MxTzXF7tbKz6byjDHmR7WOzR6oBcZ7jAoDH4=
+			</data>
+		</dict>
+		<key>flutter_assets/images/Grilled-Pork-Shoulder-Steaks-Herb-Salad.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ity1GK6uGcSYFnFSq1ngCIvUmSg=
+			</data>
+			<key>hash2</key>
+			<data>
+			elypMF8aB7zNfCnJPYoSTiVDro95X0yz6k4MUsBrhV4=
+			</data>
+		</dict>
+		<key>flutter_assets/images/Trail-Mix-Cookies.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cRiZnTe37M4cM3NknFVHIUBrevY=
+			</data>
+			<key>hash2</key>
+			<data>
+			US8a5C1i0TjX91LwP+2M6DozRD8AOGaVXFh8yMXyBaQ=
+			</data>
+		</dict>
+		<key>flutter_assets/images/bakes_for_this_quarantine.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			asuSW76w6XYUrGSyH6QSsCV222E=
+			</data>
+			<key>hash2</key>
+			<data>
+			mDH6xFY/3ccdWVqwulYc5QRIZzT2EM290RvskE/bcbo=
+			</data>
+		</dict>
+		<key>flutter_assets/images/buttermilk_springchicken.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pAzRpkwiTg5zcaLMDlyFGvmriKY=
+			</data>
+			<key>hash2</key>
+			<data>
+			UdXgTftP5MEKd++hWQJNHF/x7TF50WsnMQErZU8FLtc=
+			</data>
+		</dict>
+		<key>flutter_assets/images/crispy_ricebowl.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			D2CYcgT/o6OJwqLcvyftxbrQkvQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			+krA9cIx7SwatzqcDhaMSUXEgWx3gT+LNUxjyLvi1yg=
+			</data>
+		</dict>
+		<key>flutter_assets/images/dokbokki.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5PB5zPRf5DJNxpZEQqaOMds95DQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			PjogazA8JCIsnTDS3BcOoIpjDDuD2iQWmDV6FuHhE3o=
+			</data>
+		</dict>
+		<key>flutter_assets/images/healthy_recipes.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			8hHljvIuADy8O1y/sWQZY/ANb3o=
+			</data>
+			<key>hash2</key>
+			<data>
+			q4A6j+JQqZh8j1PtVtJ28U2sCc1vqdt+D1dD91OOTWA=
+			</data>
+		</dict>
+		<key>flutter_assets/images/yumzDrawing.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YIoZBCp0GZg7FTE64E88NiGfY/A=
+			</data>
+			<key>hash2</key>
+			<data>
+			bJycQc5jSJCxPzsO9QsJBQYtTXPRHCniC0XSM4YwkP4=
+			</data>
+		</dict>
+		<key>flutter_assets/images/zuccini_recipe.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			aehffB4oZ0kSH9yp14R/g3NKyLQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			w4Eg2WMCEpTWoPBMG27VUviS2J5UxTuJGjyrqd+jkho=
+			</data>
+		</dict>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<dict>
 			<key>hash</key>
@@ -117,11 +282,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OwKvZ/A+vqzppzcO58SVWtuzNQo=
+			S76ZJNG0vq3lIT9QJ9okEl+TR6A=
 			</data>
 			<key>hash2</key>
 			<data>
-			ViNiGicYn+hZkp3En3ZAiqbPH3f7/L9cPNawx3aFt/8=
+			bgomC/pwx6Uc2LGcvs7FJ1QPOviZ+1MZ+GRfqL69ghs=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

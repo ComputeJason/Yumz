@@ -4,12 +4,17 @@ import '../constants.dart';
 
 
 class Profile extends StatefulWidget {
+
+  static const String route = 'profile';
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 
 class _ProfileState extends State<Profile> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
