@@ -148,6 +148,7 @@ class _LoginState extends State<Login> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,7 +156,6 @@ class _LoginState extends State<Login> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-
 
           //Logo
           Padding(
@@ -251,6 +251,7 @@ class _LoginState extends State<Login> {
           ),
 
           //Username
+
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[

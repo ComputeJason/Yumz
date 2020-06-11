@@ -8,6 +8,7 @@ import 'package:yumzapp/screens/profile.dart';
 
 
 
+
 class HomeHeader implements SliverPersistentHeaderDelegate {
   HomeHeader({
     this.onLayoutToggle,
@@ -50,9 +51,6 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
             ),
           ),
         )
-
-
-
       ],
     );
   }

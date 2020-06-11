@@ -5,6 +5,7 @@ import 'screens/home.dart';
 import 'screens/edit_profile.dart';
 
 
+
 void main() {
   runApp(MyApp());
 }
@@ -25,8 +26,7 @@ class MyApp extends StatelessWidget {
         Home.route: (context) => Home(),
         Profile.route: (context) => Profile(),
         EditProfile.route: (context) => EditProfile(),
-
-    },
+      },
     );
   }
 

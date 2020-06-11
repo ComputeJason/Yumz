@@ -34,7 +34,6 @@ flutter:
   assets:
     - images/
 
-
   fonts:
     - family: Playball
       fonts:
