@@ -303,20 +303,6 @@ packages:
     version: "3.6.1"
 sdks:
   dart: ">=2.7.0 <3.0.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   flutter: ">=1.12.13+hotfix.4 <2.0.0"
-=======
-  flutter: ">=1.5.9-pre.94 <2.0.0"
->>>>>>> 4398ca9f2e6cbcf86f0a7bc1c871862e3a06e737
-=======
-  flutter: ">=1.5.9-pre.94 <2.0.0"
->>>>>>> 4398ca9f2e6cbcf86f0a7bc1c871862e3a06e737
-=======
-  flutter: ">=1.5.9-pre.94 <2.0.0"
->>>>>>> 4398ca9f2e6cbcf86f0a7bc1c871862e3a06e737
-=======
-  flutter: ">=1.5.9-pre.94 <2.0.0"
->>>>>>> 4398ca9f2e6cbcf86f0a7bc1c871862e3a06e737
+
