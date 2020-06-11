@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'profile.dart';
+import 'screens/profile.dart';
+import 'screens/login.dart';
+import 'screens/home.dart';
+import 'screens/edit_profile.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -15,8 +19,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Profile(),
+      initialRoute: Login.route,
+      routes: {
+        Login.route: (context) => Login(),
+        Home.route: (context) => Home(),
+        Profile.route: (context) => Profile(),
+        EditProfile.route: (context) => EditProfile(),
+
+    },
     );
   }
+
 }
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1067338712981",
+    "firebase_url": "https://yumz-abb71.firebaseio.com",
+    "project_id": "yumz-abb71",
+    "storage_bucket": "yumz-abb71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067338712981:android:323c620d3ed1ce0431189c",
+        "android_client_info": {
+          "package_name": "jasonchenyusen.yumzapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067338712981-3p381ugevu2p57137qafg692hmmqkvsl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN8UeczWzQhjxsT5IJmMcksDFvdaCvMwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067338712981-3p381ugevu2p57137qafg692hmmqkvsl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

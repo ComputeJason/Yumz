@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+options: "5e4a0bfff8b88a0e0cec94dbf72c0015"
+build_time: [1591842575, 390085000]
+inputs:
+  "/Users/jassoonchen/AndroidStudioProjects/Yumz_orbital_app/ios/Runner/AppDelegate.swift": [1590754138, 263484887]
