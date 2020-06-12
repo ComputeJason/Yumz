@@ -8,7 +8,7 @@ import 'package:yumzapp/screens/login.dart';
 import 'package:flutter/material.dart';
 import '../recipe.dart';
 import '../constants.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
 
 class Profile extends StatefulWidget {
 
@@ -26,6 +26,8 @@ class _ProfileState extends State<Profile> {
   FirebaseUser loggedInUser;
   String username = '';
   String bio = '';
+  String downloadProfilePicUrl;
+
 
   @override
   void initState() {
@@ -65,6 +67,24 @@ class _ProfileState extends State<Profile> {
     } catch (e){
       print(e);
     }
+    print('Fetched current user');
+    downloadProfilePic();
+  }
+
+  void downloadProfilePic() async{
+    try{
+      StorageReference reference = FirebaseStorage.instance.ref().child('${loggedInUser.email}.jpg');
+      String downloadAddress = await reference.getDownloadURL();
+      setState(() {
+        downloadProfilePicUrl = downloadAddress;
+      });
+    } catch(e){
+      print(e);
+      setState(() {
+        downloadProfilePicUrl = 'https://st2.depositphotos.com/6759912/11383/i/950/depositphotos_113833926-stock-photo-sandwich-burger-on-white-background.jpg';
+      });
+    }
+    print('Fetched profile pic');
   }
 
 
@@ -95,14 +115,6 @@ class _ProfileState extends State<Profile> {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert, size: 34, color: kIconOrButtonColor,),
-            onPressed: (){
-              Navigator.push(context , MaterialPageRoute(builder: (context){
-                return EditProfile(user: loggedInUser,);
-              }),);
-            },
-          ),
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: IconButton(
@@ -138,8 +150,7 @@ class _ProfileState extends State<Profile> {
               padding: const EdgeInsets.only(top: 10),
               child: CircleAvatar(
                 radius: 60,
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSuwQMMkXfazsQYA4y9eTYucjzq_Z1wicZYGIvgxw2bJnA9H6r&usqp=CAU'),
+                backgroundImage: downloadProfilePicUrl == null ? null : NetworkImage(downloadProfilePicUrl),
                 backgroundColor: Color(0xFFA7ACA7),
               ),
             ),
@@ -181,7 +192,7 @@ class _ProfileState extends State<Profile> {
               color: Colors.grey,
               onPressed: (){
                 Navigator.push(context , MaterialPageRoute(builder: (context){
-                  return EditProfile(user: loggedInUser,);
+                  return EditProfile(user: loggedInUser, url: downloadProfilePicUrl);
                 }),);
               },
               child: Text('Edit Profile', style: TextStyle(fontSize: 13),),

@@ -153,223 +153,225 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
 
-          //Logo
-          Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 5),
-            child: ClipRect(
-              child: Container(
-                child: Align(
-                  alignment: Alignment.center,
-                  widthFactor: 0.6,
-                  heightFactor: 0.6,
-                  child: Image.asset(
-                    'images/yumzDrawing.png',
-                    fit: BoxFit.cover,
+            //Logo
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 5),
+              child: ClipRect(
+                child: Container(
+                  child: Align(
+                    alignment: Alignment.center,
+                    widthFactor: 0.6,
+                    heightFactor: 0.6,
+                    child: Image.asset(
+                      'images/yumzDrawing.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
 
-          //Sign in/up toggle
-          Padding(
-            padding: const EdgeInsets.only(bottom: 40),
-            child: Container(
-              width: 190,
-              height: 35,
-              decoration: BoxDecoration(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          signIn = !signIn;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: signIn
-                              ? kIconOrButtonColor
-                              : kIconOrButtonColor.withOpacity(0.4),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Sign in',
-                            style: TextStyle(
-                                fontWeight: signIn ? FontWeight.bold : null,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    child: Container(
-                      color: Colors.grey.shade300,
-                      height: 50,
-                      width: 2,
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          signIn = !signIn;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
+            //Sign in/up toggle
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: Container(
+                width: 190,
+                height: 35,
+                decoration: BoxDecoration(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            signIn = !signIn;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
                             color: signIn
-                                ? kIconOrButtonColor.withOpacity(0.4)
-                                : kIconOrButtonColor,
+                                ? kIconOrButtonColor
+                                : kIconOrButtonColor.withOpacity(0.4),
                             borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10),
-                                bottomRight: Radius.circular(10))),
-                        child: Center(
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(
-                              fontWeight: !signIn ? FontWeight.bold : null,
+                                topLeft: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Sign in',
+                              style: TextStyle(
+                                  fontWeight: signIn ? FontWeight.bold : null,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      child: Container(
+                        color: Colors.grey.shade300,
+                        height: 50,
+                        width: 2,
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            signIn = !signIn;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: signIn
+                                  ? kIconOrButtonColor.withOpacity(0.4)
+                                  : kIconOrButtonColor,
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10),
+                                  bottomRight: Radius.circular(10))),
+                          child: Center(
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                fontWeight: !signIn ? FontWeight.bold : null,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
 
-          //Username
+            //Username
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 5, left: 73),
-                child: Text(
-                  'EMAIL',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 5, left: 73),
+                  child: Text(
+                    'EMAIL',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            width: 360,
-            child: TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                fillColor: kRandomBlockGrey,
-                filled: true,
-                hintText: 'Enter your email',
-                icon: Icon(
-                  Icons.people,
-                  color: kIconOrButtonColor,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-              ),
-              onChanged: (value) {
-                email = value;
-              },
+              ],
             ),
-          ),
-
-          //Password
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 5, left: 73),
-                child: Text(
-                  'PASSWORD',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+            Container(
+              width: 360,
+              child: TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  fillColor: kRandomBlockGrey,
+                  filled: true,
+                  hintText: 'Enter your email',
+                  icon: Icon(
+                    Icons.people,
+                    color: kIconOrButtonColor,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                 ),
+                onChanged: (value) {
+                  email = value;
+                },
               ),
-            ],
-          ),
-          Container(
-            width: 360,
-            child: TextField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: kRandomBlockGrey,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                hintText: 'Enter your password',
-                icon: Icon(
-                  Icons.lock,
-                  color: kIconOrButtonColor,
-                ),
-              ),
-              onChanged: (value) {
-                password = value;
-              },
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 70),
-                child: Text(
-                  '*atleast 6 chars long*',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ],
-          ),
 
-          //submit button
-          Padding(
-            padding: const EdgeInsets.only(top: 35),
-            child: FlatButton(
-              onPressed: checkLogin,
-              child: Container(
-                child: Text(
-                  signIn ? 'Sign in' : 'Sign up',
-                  style: TextStyle(
-                    fontSize: 15,
+            //Password
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 5, left: 73),
+                  child: Text(
+                    'PASSWORD',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              color: kIconOrButtonColor,
+              ],
             ),
-          ),
-        ],
+            Container(
+              width: 360,
+              child: TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: kRandomBlockGrey,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  hintText: 'Enter your password',
+                  icon: Icon(
+                    Icons.lock,
+                    color: kIconOrButtonColor,
+                  ),
+                ),
+                onChanged: (value) {
+                  password = value;
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(left: 70),
+                  child: Text(
+                    '*atleast 6 chars long*',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //submit button
+            Padding(
+              padding: const EdgeInsets.only(top: 35),
+              child: FlatButton(
+                onPressed: checkLogin,
+                child: Container(
+                  child: Text(
+                    signIn ? 'Sign in' : 'Sign up',
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                color: kIconOrButtonColor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
