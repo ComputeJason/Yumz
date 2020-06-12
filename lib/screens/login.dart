@@ -252,7 +252,6 @@ class _LoginState extends State<Login> {
             ),
 
             //Username
-
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[

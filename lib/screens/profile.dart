@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yumzapp/screens/edit_profile.dart';
@@ -8,11 +9,10 @@ import 'package:yumzapp/screens/login.dart';
 import 'package:flutter/material.dart';
 import '../recipe.dart';
 import '../constants.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class Profile extends StatefulWidget {
 
-  static const String route = 'profile';
+  static const String route = 'profile'; //route for pushNamed
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -21,12 +21,12 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
-  final _store = Firestore.instance;
-  final _auth = FirebaseAuth.instance;
+  final _store = Firestore.instance; //FireStore instance
+  final _auth = FirebaseAuth.instance; //Fire_Auth instance
   FirebaseUser loggedInUser;
   String username = '';
   String bio = '';
-  String downloadProfilePicUrl;
+  String downloadProfilePicUrl; //Network image for Display Pic
 
 
   @override
@@ -35,20 +35,26 @@ class _ProfileState extends State<Profile> {
     getCurrentUser();
   }
 
-  //displaying the Bio,Username on entering page from fireStore
+  //Function to get the current logged in user --> get their bio , username , dp to display
   void getCurrentUser() async {
     try{
       final user = await _auth.currentUser();
       if(user != null){
         loggedInUser = user;
         String email = loggedInUser.email;
+
+        //retrieve user info from firestore Database based on email
         var result = await _store.collection('users').where('email' , isEqualTo: loggedInUser.email).getDocuments();
-        result.documents.forEach((res){
+        result.documents.forEach((res){ // --> only have one document but must use forEach
+
+          //if have username --> display username
           if(!res['username'].isEmpty){
             print('hello');
             setState(() {
               username = res['username'];
             });
+
+          //else display the name before the @ in the email
           } else {
             print('bye');
             setState(() {
@@ -56,6 +62,7 @@ class _ProfileState extends State<Profile> {
             });
           }
 
+          //if have bio, display bio, else empty
           if(!res['bio'].isEmpty){
             setState(() {
               bio = res['bio'];
@@ -68,16 +75,21 @@ class _ProfileState extends State<Profile> {
       print(e);
     }
     print('Fetched current user');
-    downloadProfilePic();
+    downloadProfilePic(); // trigger the fetch Display pic to fetch Pic from fire Storage
   }
 
+  //Function to get the display pic of the user if available, else show default pic
   void downloadProfilePic() async{
+
+    //if user stored their own display pic, display that pic
     try{
       StorageReference reference = FirebaseStorage.instance.ref().child('${loggedInUser.email}.jpg');
       String downloadAddress = await reference.getDownloadURL();
       setState(() {
         downloadProfilePicUrl = downloadAddress;
       });
+
+    //else if that pic doesnt exist, display the default pic
     } catch(e){
       print(e);
       setState(() {
@@ -88,7 +100,7 @@ class _ProfileState extends State<Profile> {
   }
 
 
-
+  //MAIN BUILD METHOD
   @override
   Widget build(BuildContext context) {
     return Scaffold(
