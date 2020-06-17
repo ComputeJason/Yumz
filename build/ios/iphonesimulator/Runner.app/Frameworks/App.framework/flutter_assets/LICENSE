@@ -5090,6 +5090,7 @@ flutter_plugin_android_lifecycle
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
+<<<<<<< HEAD
 flutter_rating_bar
 
 The MIT License (MIT)
@@ -5115,6 +5116,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 --------------------------------------------------------------------------------
+=======
+>>>>>>> 515bbded504abe6482f5f9283f50e3774d00ec4a
 flutter_sticky_header
 
 MIT License

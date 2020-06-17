@@ -90,7 +90,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
+<<<<<<< HEAD
 		h4A0RMShbL1irDBGuC1EIs8U99o=
+=======
+		RPdpO+GtH7etOrXYUC70Gd/IWjA=
+>>>>>>> 515bbded504abe6482f5f9283f50e3774d00ec4a
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

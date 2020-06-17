@@ -86,7 +86,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
+<<<<<<< HEAD
 		HKiV/AzwQ5L3xFEfZ+nd//QXRXI=
+=======
+		C65bWSLaST7cWhDnovnfao+Dj0Y=
+>>>>>>> 515bbded504abe6482f5f9283f50e3774d00ec4a
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

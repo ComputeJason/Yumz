@@ -78,7 +78,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
+<<<<<<< HEAD
 		VQOlJX/HFpGpUcQPXj/XLTnoA5s=
+=======
+		g3i2WCEZ1qHudf+eD2XtDwO0R5w=
+>>>>>>> 515bbded504abe6482f5f9283f50e3774d00ec4a
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

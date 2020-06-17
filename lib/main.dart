@@ -29,7 +29,10 @@ class MyApp extends StatelessWidget {
         Home.route: (context) => Home(),
         Profile.route: (context) => Profile(),
         EditProfile.route: (context) => EditProfile(),
+<<<<<<< HEAD
         AddRecipe.route: (context) => AddRecipe(),
+=======
+>>>>>>> 515bbded504abe6482f5f9283f50e3774d00ec4a
       },
     );
   }
