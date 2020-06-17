@@ -1,25 +1,124 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:yumzapp/screens/add_recipe.dart';
+import 'package:yumzapp/screens/edit_profile.dart';
+import 'package:yumzapp/screens/home.dart';
+import 'package:yumzapp/screens/login.dart';
 import 'package:flutter/material.dart';
 import '../recipe.dart';
 import '../constants.dart';
 
-
 class Profile extends StatefulWidget {
+
+  static const String route = 'profile'; //route for pushNamed
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 
 class _ProfileState extends State<Profile> {
+
+  final _store = Firestore.instance; //FireStore instance
+  final _auth = FirebaseAuth.instance; //Fire_Auth instance
+  FirebaseUser loggedInUser;
+  String username = '';
+  String bio = '';
+  String downloadProfilePicUrl; //Network image for Display Pic
+
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  //Function to get the current logged in user --> get their bio , username , dp to display
+  void getCurrentUser() async {
+    try{
+      final user = await _auth.currentUser();
+      if(user != null){
+        loggedInUser = user;
+        String email = loggedInUser.email;
+
+        //retrieve user info from firestore Database based on email
+        var result = await _store.collection('users').where('email' , isEqualTo: loggedInUser.email).getDocuments();
+        result.documents.forEach((res){ // --> only have one document but must use forEach
+
+          //if have username --> display username
+          if(!res['username'].isEmpty){
+            print('hello');
+            setState(() {
+              username = res['username'];
+            });
+
+          //else display the name before the @ in the email
+          } else {
+            print('bye');
+            setState(() {
+              username = email.substring(0,email.indexOf('@'));
+            });
+          }
+
+          //if have bio, display bio, else empty
+          if(!res['bio'].isEmpty){
+            setState(() {
+              bio = res['bio'];
+            });
+          }
+        });
+
+      }
+    } catch (e){
+      print(e);
+    }
+    print('Fetched current user');
+    downloadProfilePic(); // trigger the fetch Display pic to fetch Pic from fire Storage
+  }
+
+  //Function to get the display pic of the user if available, else show default pic
+  void downloadProfilePic() async{
+
+    //if user stored their own display pic, display that pic
+    try{
+      StorageReference reference = FirebaseStorage.instance.ref().child('${loggedInUser.email}.jpg');
+      String downloadAddress = await reference.getDownloadURL();
+      setState(() {
+        downloadProfilePicUrl = downloadAddress;
+      });
+
+    //else if that pic doesnt exist, display the default pic
+    } catch(e){
+      print(e);
+      setState(() {
+        downloadProfilePicUrl = 'https://st2.depositphotos.com/6759912/11383/i/950/depositphotos_113833926-stock-photo-sandwich-burger-on-white-background.jpg';
+      });
+    }
+    print('Fetched profile pic');
+  }
+
+
+  //MAIN BUILD METHOD
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        leading: Icon(
-          Icons.home,
-          color: kIconOrButtonColor,
-          size: 34,
+        leading: IconButton(
+          icon: Icon(
+            CupertinoIcons.reply_thick_solid,
+            color: kIconOrButtonColor,
+            size: 34,
+          ),
+          tooltip: 'Log Out',
+          onPressed: (){
+            _auth.signOut();
+            Navigator.pushNamed(context, Login.route);
+          },
         ),
         title: Text(
           'Profile',
@@ -27,11 +126,26 @@ class _ProfileState extends State<Profile> {
             fontFamily: 'Playball',
             fontSize: 30,
           ),
-
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              icon: Icon(Icons.home, size: 34, color: kIconOrButtonColor,),
+              onPressed: (){
+                Navigator.pushNamed(context, Home.route);
+              },
+              tooltip: "Homepage",
+              ),
+            ),
+        ],
       ),
+
+      //add recipe button
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.pushNamed(context, AddRecipe.route);
+        },
         backgroundColor: kIconOrButtonColor,
         icon: Icon(Icons.add),
         label: Text(
@@ -41,6 +155,9 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
+
+
+      //body
       body: Column(
         children: <Widget>[
           Center(
@@ -48,36 +165,61 @@ class _ProfileState extends State<Profile> {
               padding: const EdgeInsets.only(top: 10),
               child: CircleAvatar(
                 radius: 60,
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSuwQMMkXfazsQYA4y9eTYucjzq_Z1wicZYGIvgxw2bJnA9H6r&usqp=CAU'),
+                backgroundImage: downloadProfilePicUrl == null ? null : NetworkImage(downloadProfilePicUrl),
                 backgroundColor: Color(0xFFA7ACA7),
               ),
             ),
           ),
+
+          //username
           Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 5),
             child: Text(
-              '@CheesuCake',
+              username,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
+
+          //bio
           Container(
             child: Center(
               child: Text(
-                'Hi everyone! My name is Cheesu and I really love cooking! Im here to share some of my original recipes that are super easy to make and super delicious to EATT! :D',
+                bio,
                 style: TextStyle(
                   fontSize: 12,
                 ),
               ),
             ),
             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-            height: 100,
+            height: 70,
             width: 300,
             color: Color(0xFFECE8E5),
           ),
+
+          Container(
+            padding: EdgeInsets.only(top: 5),
+            width: 300,
+            height: 30,
+            child: OutlineButton(
+              color: Colors.grey,
+              onPressed: (){
+                Navigator.push(context , MaterialPageRoute(builder: (context){
+                  return EditProfile(user: loggedInUser, url: downloadProfilePicUrl);
+                }),);
+              },
+              child: Text('Edit Profile', style: TextStyle(fontSize: 13),),
+              borderSide: BorderSide(
+                color: Colors.black.withOpacity(0.2),
+                width: 0.8,
+              ),
+              highlightedBorderColor: Colors.grey,
+            ),
+          ),
+
+          //divider
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
@@ -97,9 +239,13 @@ class _ProfileState extends State<Profile> {
               thickness: 2,
             ),
           ),
+
+          //Recipe heading
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+
+              //'Recipes' Text
               Padding(
                 padding: const EdgeInsets.only(top: 7, bottom: 5),
                 child: Text(
@@ -117,6 +263,8 @@ class _ProfileState extends State<Profile> {
               ),
             ],
           ),
+
+          //for list
           Expanded(
             child: Container(
               child: _buildContent(),
@@ -127,6 +275,8 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+
+  //listview builder
   Widget _buildContent() {
     return ListView.builder(
       scrollDirection: Axis.vertical,
@@ -151,6 +301,8 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
+  //listtile content
   class RecipeListTile extends ListTile{
     RecipeListTile(Recipe recipe)
     : super(
@@ -160,6 +312,7 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+  //list contents for now
   List<Recipe> recipes = [
     Recipe(recipeName: 'cheesecake', recipeDescription: 'a delicious cake cheesy cake that is easy to make'),
     Recipe(recipeName: 'orangecake', recipeDescription: 'a tangy delicacy made from orange skins'),

@@ -3,6 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 import 'package:yumzapp/constants.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:yumzapp/screens/profile.dart';
+
+
+
+
 
 class HomeHeader implements SliverPersistentHeaderDelegate {
   HomeHeader({
@@ -21,12 +26,12 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          'images/Untitled-2-01.png',
+          'images/yumzDrawing.png',
           fit: BoxFit.cover,
         ),
         Positioned(
-          left: 4.0,
-          top: 4.0,
+          right: 10,
+          top: 4,
           child: SafeArea(
             child: IconButton(
               icon: Icon(Icons.search),
@@ -34,6 +39,18 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
             ),
           ),
         ),
+        Positioned(
+          left: 6,
+          top: 4,
+          child: SafeArea(
+            child: IconButton(
+              icon: Icon(Icons.account_circle, color: Colors.grey,),
+              onPressed: (){
+                Navigator.pushNamed(context, Profile.route);
+              },
+            ),
+          ),
+        )
       ],
     );
   }
@@ -52,6 +69,9 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
 }
 
 class Home extends StatelessWidget {
+
+  static const String route = 'home';
+
   Home({Key key, this.onLayoutToggle}) : super(key: key);
   final VoidCallback onLayoutToggle;
 
@@ -86,8 +106,6 @@ final List<String> recipeAssets = [
     'Crispy Ricebowl',
     'Grilled Pork Shoulder Steaks Herb Salad',
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
