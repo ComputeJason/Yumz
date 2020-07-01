@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yumzapp/screens/add_recipe.dart';
 import 'screens/profile.dart';
 import 'screens/login.dart';
 import 'screens/home.dart';
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
         Home.route: (context) => Home(),
         Profile.route: (context) => Profile(),
         EditProfile.route: (context) => EditProfile(),
+        AddRecipe.route: (context) => AddRecipe(),
+
       },
     );
   }

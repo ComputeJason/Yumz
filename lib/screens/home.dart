@@ -107,8 +107,6 @@ final List<String> recipeAssets = [
     'Grilled Pork Shoulder Steaks Herb Salad',
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

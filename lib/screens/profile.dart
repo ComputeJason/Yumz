@@ -3,12 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:yumzapp/screens/add_recipe.dart';
 import 'package:yumzapp/screens/edit_profile.dart';
 import 'package:yumzapp/screens/home.dart';
 import 'package:yumzapp/screens/login.dart';
 import 'package:flutter/material.dart';
 import '../recipe.dart';
 import '../constants.dart';
+import 'package:yumzapp/screens/recipePage.dart';
 
 class Profile extends StatefulWidget {
 
@@ -142,7 +145,9 @@ class _ProfileState extends State<Profile> {
 
       //add recipe button
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.pushNamed(context, AddRecipe.route);
+        },
         backgroundColor: kIconOrButtonColor,
         icon: Icon(Icons.add),
         label: Text(
@@ -172,7 +177,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 5),
             child: Text(
-              username,
+              '###31867721230E',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -282,10 +287,28 @@ class _ProfileState extends State<Profile> {
         Recipe recipe = recipes[index];
         return Column(
           children: <Widget>[
-            Container(
+            (index == 0 ? GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RecipePage()));
+              },
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    color: Color(0xFFD9C38A),
+                    child: RecipeListTile(recipe),
+                  ),
+                  Divider(
+                    height: 2,
+                    thickness: 1,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+              )
+            : Container(
               color: Color(0xFFD9C38A),
               child: RecipeListTile(recipe),
-            ),
+            )),
             Divider(
               height: 2,
               thickness: 1,
@@ -294,7 +317,7 @@ class _ProfileState extends State<Profile> {
           ],
         );
       },
-      itemCount: 25,
+      itemCount: 26,
     );
   }
 }
@@ -311,7 +334,7 @@ class _ProfileState extends State<Profile> {
 
   //list contents for now
   List<Recipe> recipes = [
-    Recipe(recipeName: 'cheesecake', recipeDescription: 'a delicious cake cheesy cake that is easy to make'),
+    Recipe(recipeName: 'Blueberry Cheesecake', recipeDescription: 'A delicious cheesy cake that is easy to make!'),
     Recipe(recipeName: 'orangecake', recipeDescription: 'a tangy delicacy made from orange skins'),
     Recipe(recipeName: 'mushroom soup', recipeDescription: 'best to drink during a cold rainy day'),
     Recipe(recipeName: 'tomatocake', recipeDescription: 'a weird cake yet satisfying pastry to bake'),
@@ -336,9 +359,7 @@ class _ProfileState extends State<Profile> {
     Recipe(recipeName: 'bread', recipeDescription: 'j'),
     Recipe(recipeName: 'bread', recipeDescription: 'j'),
     Recipe(recipeName: 'bread', recipeDescription: 'j'),
-    Recipe(recipeName: 'bread', recipeDescription: 'j'),
-    Recipe(recipeName: 'bread', recipeDescription: 'j'),
-    Recipe(recipeName: 'bread', recipeDescription: 'j'),
+    Recipe(recipeName: 'Grandmas Best Pumpkin Soup', recipeDescription: 'Pumpkin Soup so good you that it makes you go yeeeeet'),
 
 
 

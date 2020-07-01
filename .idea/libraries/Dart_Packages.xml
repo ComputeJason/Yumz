@@ -156,10 +156,24 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_rating_bar">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-3.0.1+1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_sticky_header">
           <value>
             <list>
               <option value="$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_sticky_header-0.4.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_tags">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.8+2/lib" />
             </list>
           </value>
         </entry>
@@ -369,7 +383,9 @@
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-3.1.6/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.8/lib" />
+      <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-3.0.1+1/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_sticky_header-0.4.2/lib" />
+      <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.8+2/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.1/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4/lib" />
       <root url="file://$USER_HOME$/AppDevelop/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.12/lib" />

@@ -54,7 +54,7 @@ class _EditProfileState extends State<EditProfile> {
     print('uploading');
   }
 
-  //function to push the page tp Profile page
+  //function to push the page to Profile page
   void pushToProfile(){
     Navigator.pushNamed(context, Profile.route);
   }
