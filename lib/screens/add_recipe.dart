@@ -12,6 +12,8 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+final _store = Firestore.instance; //FireStore instance
+final _auth = FirebaseAuth.instance; //Fire_Auth instance
 
 class AddRecipe extends StatefulWidget {
   static const String route = 'addRecipe';
@@ -27,6 +29,9 @@ class AddRecipe extends StatefulWidget {
 }
 
 class _AddRecipeState extends State<AddRecipe> {
+
+  FirebaseUser loggedInUser;
+
   Widget buildBottomSheet(BuildContext context) {
     return Container(child: Center(child: Text('hello')));
   }
@@ -92,6 +97,10 @@ class _AddRecipeState extends State<AddRecipe> {
 
   //function to upload recipe on to fire store
   Future uploadRecipe() async {
+    final user = await _auth.currentUser();
+    loggedInUser = user;
+    String email = loggedInUser.email;
+
     final docRef = await Firestore.instance.collection('recipes').add({
       'name': name,
       'description': _descriptionController.text,
@@ -101,10 +110,16 @@ class _AddRecipeState extends State<AddRecipe> {
       'tags' : ingredientTagsNameList,
       'ingredients': ingredientMeasurementNameList,
       'steps' : stepsStringList,
+      'user': user.email,
       //'created': DateTime.fromMillisecondsSinceEpoch(created.creationTimeMillis, isUtc: true).toString(),
     });
     recipeID = docRef.documentID; //to be used to reference to the photo
+    await Firestore.instance
+        .collection('users')
+        .document(user.email)
+        .updateData({'recipe': FieldValue.arrayUnion([recipeID])});
   }
+
 
 
   @override
@@ -150,36 +165,43 @@ class _AddRecipeState extends State<AddRecipe> {
                       SizedBox(height: 10.0),
                       Row(
                         children: <Widget>[
-                          SizedBox(
-                            width: 300.0,
-                            child: TextField(
-                              onChanged: (newInput){
-                                name = newInput;
-                              },
-                              decoration: const InputDecoration(
-                                labelText: 'RECIPE NAME',
-                                labelStyle: kAddHeading,
-                                hintText: 'add recipe name',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 10.0,
+                          Expanded(
+                            flex: 5,
+                            child: SizedBox(
+                              width: 300.0,
+                              child: TextField(
+                                onChanged: (newInput){
+                                  name = newInput;
+                                },
+                                decoration: const InputDecoration(
+                                  labelText: 'RECIPE NAME',
+                                  labelStyle: kAddHeading,
+                                  hintText: 'add recipe name',
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 10.0,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 5,
                           ),
-                          GestureDetector(
-                            onTap: () {_getImage();},
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.white,
-                              child: Icon(Icons.camera_alt, color: kHeading, size: 25,),
+                          Expanded(
+                            flex: 2,
+                            child: GestureDetector(
+                              onTap: () {_getImage();},
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child: Icon(Icons.camera_alt, color: kHeading, size: 25,),
+                              ),
                             ),
                           ),
                         ],
                       ),
+
                       SizedBox(height: 20.0),
                       SizedBox(
                         width: 300.0,

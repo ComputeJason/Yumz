@@ -4,6 +4,8 @@ import 'screens/profile.dart';
 import 'screens/login.dart';
 import 'screens/home.dart';
 import 'screens/edit_profile.dart';
+import 'search_screen.dart';
+import 'dart:core';
 
 
 
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         Profile.route: (context) => Profile(),
         EditProfile.route: (context) => EditProfile(),
         AddRecipe.route: (context) => AddRecipe(),
+        SearchScreen.route: (context) => SearchScreen(),
 
       },
     );

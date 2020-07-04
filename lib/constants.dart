@@ -17,8 +17,16 @@ const TextStyle kAddHeading = TextStyle(
   fontSize: 20,
 );
 
+const TextStyle kSubHeading =  TextStyle(
+  color: Colors.grey,
+  fontSize: 10.0,
+);
+
 const TextStyle kPageHeading = TextStyle(
 fontWeight: FontWeight.w900, color: kHeading, fontSize: 45.0,);
+
+const TextStyle kPageHeadingInverse = TextStyle(
+  fontWeight: FontWeight.w900, color: kBackgroundColor, fontSize: 45.0,);
 
 const BoxDecoration kRoundedCard = BoxDecoration(
   color: Colors.white,

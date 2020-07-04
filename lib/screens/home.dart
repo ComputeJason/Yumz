@@ -4,10 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:yumzapp/constants.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:yumzapp/screens/profile.dart';
-
-
-
-
+import 'package:yumzapp/search_screen.dart';
 
 class HomeHeader implements SliverPersistentHeaderDelegate {
   HomeHeader({
@@ -26,7 +23,7 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          'images/yumzDrawing.png',
+          'images/yumz_logo.png',
           fit: BoxFit.cover,
         ),
         Positioned(
@@ -35,7 +32,9 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
           child: SafeArea(
             child: IconButton(
               icon: Icon(Icons.search),
-              onPressed: onLayoutToggle,
+              onPressed: () {
+                Navigator.pushNamed(context, SearchScreen.route);
+              },
             ),
           ),
         ),
@@ -44,8 +43,11 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
           top: 4,
           child: SafeArea(
             child: IconButton(
-              icon: Icon(Icons.account_circle, color: Colors.grey,),
-              onPressed: (){
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.grey,
+              ),
+              onPressed: () {
                 Navigator.pushNamed(context, Profile.route);
               },
             ),
@@ -69,7 +71,6 @@ class HomeHeader implements SliverPersistentHeaderDelegate {
 }
 
 class Home extends StatelessWidget {
-
   static const String route = 'home';
 
   Home({Key key, this.onLayoutToggle}) : super(key: key);
@@ -89,7 +90,7 @@ class Home extends StatelessWidget {
     'craze for zuccini',
   ];
 
-final List<String> recipeAssets = [
+  final List<String> recipeAssets = [
     'images/Trail-Mix-Cookies.jpg',
     'images/buttermilk_springchicken.jpg',
     'images/dokbokki.jpg',
@@ -117,149 +118,155 @@ final List<String> recipeAssets = [
 
   Widget _scrollView(BuildContext context) {
     // Use LayoutBuilder to get the hero header size while keeping the image aspect-ratio
-    return Container(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: HomeHeader(
-              onLayoutToggle: onLayoutToggle,
-              minExtent: 150.0,
-              maxExtent: 250.0,
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60.0,
-              color: kAppBarColor,
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'What\'s New?',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
+    return SafeArea(
+      child: Container(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: HomeHeader(
+                onLayoutToggle: onLayoutToggle,
+                minExtent: 150.0,
+                maxExtent: 250.0,
               ),
             ),
-            sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200.0,
-                mainAxisSpacing: 0.0,
-                crossAxisSpacing: 0.0,
-                childAspectRatio: 0.75,
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                color: kAppBarColor,
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'What\'s New?',
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
+                ),
               ),
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Padding(
-                    padding: _edgeInsetsForIndex(index),
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: Alignment.center,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage(
-                                assetNames[index % assetNames.length],
+              sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200.0,
+                  mainAxisSpacing: 0.0,
+                  crossAxisSpacing: 0.0,
+                  childAspectRatio: 0.75,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return Padding(
+                      padding: _edgeInsetsForIndex(index),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.center,
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage(
+                                  assetNames[index % assetNames.length],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.transparent,
-                                Colors.black54,
-                              ],
-                              stops: [0.5, 1.0],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              tileMode: TileMode.repeated,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                          child: Text(
-                            assetTitles[index % assetNames.length],
-                            style: TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                childCount: assetNames.length,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60.0,
-              color: kAppBarColor,
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Poplar recipes',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
-              ),
-            ),
-            sliver: SliverFixedExtentList(
-              itemExtent: 400.0,
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: Alignment.center,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage(
-                                recipeAssets[index],
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black54,
+                                ],
+                                stops: [0.5, 1.0],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                tileMode: TileMode.repeated,
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.transparent,
-                                Colors.black54,
-                              ],
-                              stops: [0.5, 1.0],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              tileMode: TileMode.repeated,
+                          Positioned(
+                            left: 16.0,
+                            right: 16.0,
+                            bottom: 16.0,
+                            child: Text(
+                              assetTitles[index % assetNames.length],
+                              style:
+                                  TextStyle(fontSize: 20.0, color: Colors.white),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                          child: Text(
-                            recipeNames[index],
-                            style: TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                childCount: recipeAssets.length,
+                        ],
+                      ),
+                    );
+                  },
+                  childCount: assetNames.length,
+                ),
               ),
             ),
-          ),
-        ],
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                color: kAppBarColor,
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Poplar recipes',
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
+                ),
+              ),
+              sliver: SliverFixedExtentList(
+                itemExtent: 400.0,
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.center,
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage(
+                                  recipeAssets[index],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black54,
+                                ],
+                                stops: [0.5, 1.0],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                tileMode: TileMode.repeated,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: 16.0,
+                            right: 16.0,
+                            bottom: 16.0,
+                            child: Text(
+                              recipeNames[index],
+                              style:
+                                  TextStyle(fontSize: 20.0, color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  childCount: recipeAssets.length,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
